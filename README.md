@@ -3,7 +3,7 @@ Detta var vår första inlämningsuppgift i kursen API-utveckling, och syftet va
 
 Uppgiften gick ut på att:
 * Skapa ett normaliserat ER-diagram (EG-diagram) med tabeller, kolumner, primärnycklar och främmande nycklar
-* Definiera relationer mellan tabellerna
+* Skapa tabellerna i phpMyAdmin och definiera relationer mellan tabellerna
 * Implementera CRUD-funktionalitet (Create, Read, Update, Delete) för både produkter och kategorier
 * Möjliggöra sökning och sortering via API:et
 
@@ -18,3 +18,6 @@ Kategorier/categories: Innehåller olika kategorier som produkterna kan tillhör
 product_categories är en kopplingstabell som hanterar relationen mellan produkter och kategorier. Den gör det möjligt för en produkt att tillhöra flera kategorier och en kategori att innehålla flera produkter.
 
 Relationen mellan products och categories är alltså en many-to-many-relation, vilket löses med hjälp av kopplingstabellen product_categories. Den innehåller två främmande nycklar (product_id och category_id) och har en sammansatt primärnyckel för att undvika dubbletter.
+
+
+## phpMyAdmin
