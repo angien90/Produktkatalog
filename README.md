@@ -9,6 +9,7 @@ Uppgiften gick ut på att:
 
 Fokus låg på att bygga en välstrukturerad databasmodell samt ett API med tydlig och korrekt hantering av data.
 
+
 ## Använda verktyg i projektet
 <div align="center">
   <img src="https://github.com/user-attachments/assets/08a3194b-5a8c-4ca6-afb7-d863003a3628" width="100"/>
@@ -17,7 +18,6 @@ Fokus låg på att bygga en välstrukturerad databasmodell samt ett API med tydl
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://github.com/user-attachments/assets/bedb7ac9-6fb6-4eb7-be4c-3538dfb5a63d" width="100"/>
 </div>
-
 
 
 ## Normaliserat Entity Relationshop Diagram 
@@ -29,7 +29,7 @@ EG-diagrammet ovan visar databasstrukturen för en produktkatalog i en e-shop. D
 
 
 
-## phpMyAdmin
+## phpMyAdmin för att administrera min MariaDB-databas
 ### Tabellen categories
 ![image](https://github.com/user-attachments/assets/fe275ed7-6b2d-434c-ab30-0724e0ed9572)
 
@@ -41,7 +41,6 @@ EG-diagrammet ovan visar databasstrukturen för en produktkatalog i en e-shop. D
 
 #### Forent keys för product_categories
 ![image](https://github.com/user-attachments/assets/df08cbe4-dfd7-41b0-9a7f-b7eff35c1d35)
-
 
 Jag har valt CASCADE för om en produkt eller kategori tas bort, så tas även radkopplingarna i product_categories bort automatiskt. Detta för att undvika att poster pekar på något som inte längre finns.
 
