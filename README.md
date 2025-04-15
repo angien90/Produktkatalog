@@ -9,8 +9,18 @@ Uppgiften gick ut på att:
 
 Fokus låg på att bygga en välstrukturerad databasmodell samt ett API med tydlig och korrekt hantering av data.
 
+## Använda verktyg i projektet
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/08a3194b-5a8c-4ca6-afb7-d863003a3628" width="100"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/d87d7d11-fd84-4d58-8bed-90a3b0495951" width="100"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/bedb7ac9-6fb6-4eb7-be4c-3538dfb5a63d" width="100"/>
+</div>
 
-## Normaliserat EG-diagram 
+
+
+## Normaliserat Entity Relationshop Diagram 
 ![image](https://github.com/user-attachments/assets/c3af0dbc-0350-48ac-91fa-7d05752f4af8)
 EG-diagrammet ovan visar databasstrukturen för en produktkatalog i en e-shop. Datamodellen är normaliserad för att undvika redundans och för att hantera many-to-many-relationen mellan produkter och kategorier.
 * products: Innehåller information om varje enskild produkt, såsom titel, beskrivning, lagersaldo, pris, bild och skapelsedatum.
