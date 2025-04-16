@@ -6,29 +6,39 @@
     <title>VaruVärlden</title>
 
     <link rel="stylesheet" href="css/style.css">
-</head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+  </head>
 
 <body>
-    <div class="container">
-        <h1>Våra produkter</h1>
-    
-        <form id="product-form" class="row g-3 flex justify-content-end">
-          <div class="col-md-3">
-            <input type="text" class="form-control" id="search" placeholder="Search" name="search" onkeyup="fetchProducts(event)">
-          </div>
-
-          <div class="col-md-2">
-            <select id="inputState" class="form-select" id="sort" name="sort" onchange="fetchProducts(event)">
-              <option>Sort</option>
-              <option value="asc">Ascending</option>
-              <option value="desc">Descending</option>
-            </select>
-          </div>
-        </form>
-    
-        <div id="products"></div>
-    
+  <header>
+    <span class="brand">
+      <h1>VaruVärlden</h1>
+    </span>
+  </header>
+        
+  <main>
+    <form id="product-form" class="product-form">
+      
+      <div>
+        <input type="text" class="search" id="search" placeholder="Search" name="search" onkeyup="fetchProducts(event)">
       </div>
+
+      <div>
+        <select id="inputState" class="sort" id="sort" name="sort" onchange="fetchProducts(event)">
+          <option>Sort</option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </div>
+    </form>
+
+    <h2>Våra produkter</h2>
+    <div id="products" class="products"></div>
+  </main>
 
       <script src="js/main.js"></script>
 </body>
