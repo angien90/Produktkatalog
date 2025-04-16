@@ -28,7 +28,6 @@ EG-diagrammet ovan visar databasstrukturen för en produktkatalog i en e-shop. D
 * categories: Innehåller olika kategorier som produkterna kan tillhöra, t.ex. "Herr", "Dam", eller "Rea".
 
 
-
 ## phpMyAdmin för att administrera min MariaDB-databas
 ### Tabellen categories
 ![image](https://github.com/user-attachments/assets/fe275ed7-6b2d-434c-ab30-0724e0ed9572)
@@ -43,6 +42,21 @@ EG-diagrammet ovan visar databasstrukturen för en produktkatalog i en e-shop. D
 ![image](https://github.com/user-attachments/assets/df08cbe4-dfd7-41b0-9a7f-b7eff35c1d35)
 
 Jag har valt CASCADE för om en produkt eller kategori tas bort, så tas även radkopplingarna i product_categories bort automatiskt. Detta för att undvika att poster pekar på något som inte längre finns.
+
+
+## Installationer - Node/Express/Typescript
+1. npm init -y
+2. npm install express
+3. npm install -D typescript @types/express
+4. npm install -D tsx
+5. Skapade en src mapp och en index.ts fil
+6. npx tsc --init
+7. Ändrade tsconfig.json till "module": "NodeNext" & "outDir": "./dist"
+8. Lade till "dev": "npx tsx watch src/index.ts", "build": npx tsc --build & "start": "node dist/index.js" i package.json under scripts.
+
+För att komplilera alla TS-filer till JS kan man köra npx tsc --build. 
+
+Om du klonar detta projekt behöver du köra npm install för att installera allt som står i package.json under dependencies och devDependencies. 
 
 
 ## CRUD och endpoints
