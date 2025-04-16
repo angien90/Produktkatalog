@@ -14,8 +14,8 @@ app.get('/', (_, res) => {
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 // Routes
-const bloggposts_1 = __importDefault(require("./routes/bloggposts"));
-app.use('/posts', bloggposts_1.default);
+const products_1 = __importDefault(require("./routes/products"));
+app.use('/products', _1.default);
 // Port 3000
 const PORT = 3000;
 app.listen(PORT, () => {

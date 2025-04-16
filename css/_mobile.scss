@@ -91,12 +91,12 @@ h2 {
     font-weight: lighter;
   }
   
-.products {
+.products, .product {
     margin-top: 20px;
     border: 1px solid black;
 }
 
-.products div {
+.products div, .product div {
     margin-top: 10px;
     border: 1px solid #ccc;
     padding: 10px;

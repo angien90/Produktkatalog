@@ -1,6 +1,6 @@
 import { RowDataPacket } from "mysql2";
 
-export interface IPostDBResponse extends RowDataPacket{
+export interface IProductsDBResponse extends RowDataPacket{
   product_id: number
   product_title: string
   product_description: string
