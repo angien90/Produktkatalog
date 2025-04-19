@@ -7,23 +7,33 @@ import { IProductsDBResponse } from "../models/IProductsDBResponse";
 // Get all products
 export const fetchAllProducts = async (req: Request, res: Response) => {
   const search = req.query.search?.toString();
-  const sort = req.query.sort?.toString()?.toLowerCase(); // asc eller desc
+  const sort = req.query.sort?.toString()?.toLowerCase();
+  const gender = req.query.gender?.toString(); // Hämtar kön från query
 
-  let sql = 'SELECT * FROM products';
+  let sql = 'SELECT DISTINCT p.* FROM products p';
   const params: any[] = [];
 
+  // Kontrollera om kön är angivet
+  if (gender) {
+    sql += ' INNER JOIN product_gender pg ON p.products_id = pg.product_id';
+    sql += ' WHERE pg.genders_id = ?';
+    params.push(gender);  // Lägg till kön som parameter
+  } else {
+    sql += ' WHERE 1 = 1';  // Hämtar alla produkter om inget kön är valt
+  }
+
+  // Lägg till sökfilter om det finns
+  if (search) {
+    sql += ' AND p.title LIKE ?';
+    params.push(`%${search}%`);
+  }
+
+  // Lägg till sortering om det finns
+  if (sort === 'asc' || sort === 'desc') {
+    sql += ` ORDER BY p.price ${sort.toUpperCase()}`;
+  }
+
   try {
-    // Lägg till sökfilter
-    if (search) {
-      sql += ' WHERE title LIKE ?';
-      params.push(`%${search}%`);
-    }
-
-    // Lägg till sortering
-    if (sort === 'asc' || sort === 'desc') {
-      sql += ` ORDER BY price ${sort.toUpperCase()}`;
-    }
-
     console.log('SQL:', sql);
     console.log('Params:', params);
 
@@ -34,6 +44,8 @@ export const fetchAllProducts = async (req: Request, res: Response) => {
     res.status(500).json({ error: message });
   }
 };
+
+
 
 
 // Get a specific product

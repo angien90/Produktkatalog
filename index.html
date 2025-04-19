@@ -11,10 +11,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   </head>
 
-<body>
-  <header>
+  <body class="light-mode">
+    <header>
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round"></div>
+        </label>            
+      </div>
+  
     <span class="brand">
       <h1>VaruVärlden</h1>
       <p>För mycket av det goda är precis lagom!</p>
@@ -22,6 +30,11 @@
   </header>
         
   <main>
+    <span class="cart-info">
+      <a href="#myForm" class="button"><span class="material-symbols-outlined">shopping_cart</span><span class="cart-count"></span></a>
+      <span class="total-sum" id="totalSum">0 kr</span>  
+    </span>
+
     <form id="product-form" class="product-form">
       
       <div>
@@ -31,6 +44,9 @@
       <div>
         <select id="gender" class="gender" name="gender" onchange="fetchProduct(event)">
           <option value="">Välj kön</option>
+          <option value="Men">Men</option>
+          <option value="Women">Kvinna</option>
+          <option value="Unisex">Unisex</option>
         </select>
       </div>
 
@@ -44,8 +60,24 @@
     </form>
 
     <div id="products" class="products"></div>
+
+  <!-- Sidfot -->
+  <footer>
+    <ul>
+      <li><a href="#">Om oss</a></li>
+      <li><a href="#">Kontakta oss</a></li>
+      <li><a href="#">Instagram</a></li>
+    </ul>
+
+    <ul>
+      <li>VaruVärlden</li>
+      <li>Fashionstreet 1</li>
+      <li>123 45 Modeköping</li>
+    </ul>
+  </footer>
   </main>
 
   <script src="js/main.js"></script>
+
 </body>
 </html>
