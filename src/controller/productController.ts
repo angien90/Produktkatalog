@@ -1,20 +1,40 @@
 import { Request, Response } from "express";
 import { db } from "../config/db";
 import { ResultSetHeader, RowDataPacket } from "mysql2";
-import { IProducts } from "../models/IProducts";
+
 import { IProductsDBResponse } from "../models/IProductsDBResponse";
 
 // Get all products
 export const fetchAllProducts = async (req: Request, res: Response) => {
+  const search = req.query.search?.toString();
+  const sort = req.query.sort?.toString()?.toLowerCase(); // asc eller desc
+
+  let sql = 'SELECT * FROM products';
+  const params: any[] = [];
 
   try {
-    const [rows] = await db.query<RowDataPacket[]>('SELECT * FROM products')
-    res.json(rows)
-  } catch(error: unknown) {
-    const message = error  instanceof Error ? error.message : 'Unknown error'
-    res.status(500).json({error: message})
+    // Lägg till sökfilter
+    if (search) {
+      sql += ' WHERE title LIKE ?';
+      params.push(`%${search}%`);
+    }
+
+    // Lägg till sortering
+    if (sort === 'asc' || sort === 'desc') {
+      sql += ` ORDER BY price ${sort.toUpperCase()}`;
+    }
+
+    console.log('SQL:', sql);
+    console.log('Params:', params);
+
+    const [rows] = await db.query<RowDataPacket[]>(sql, params);
+    res.json({ rows });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    res.status(500).json({ error: message });
   }
-}
+};
+
 
 // Get a specific product
 export const fetchProduct = async (req: Request, res: Response) => {

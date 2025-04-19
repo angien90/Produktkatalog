@@ -1,36 +1,73 @@
-const postElement = document.getElementById('products');
+const productElement = document.getElementById('products');
+const genderElement = document.getElementById('gender');
+const searchInput = document.getElementById('search');
+const sortSelect = document.getElementById('sort');
 
-const getQueryString = (e) => {
-  if (e !== undefined) {
-    console.log("Event target:", e.target);
-    console.log("Target name:", e.target.name);
-    console.log("Target value:", e.target.value);
-    return `/?${e.target.name}=${e.target.value}`;
-  }
-  return "";
-};
-
-const fetchProduct = async (e) => {
+// Hämta kön från API och fyll dropdown
+const fetchGenders = async () => {
   try {
-    const response = await fetch('http://localhost:3000/products' + getQueryString(e));
+    const response = await fetch('http://localhost:3000/genders');
     const data = await response.json();
 
-    if (data.rows && Array.isArray(data.rows)) {
-      postElement.innerHTML = data.rows.map((product) => `
+    if (Array.isArray(data.rows)) {
+      data.rows.forEach(gender => {
+        const option = document.createElement('option');
+        option.value = gender.genders_id;
+        option.textContent = gender.gender;
+        genderElement.appendChild(option);
+      });
+    }
+  } catch (err) {
+    console.error("Kunde inte hämta genders:", err);
+  }
+};
+
+// Bygg query string utifrån alla filter
+const getQueryString = () => {
+  const search = searchInput.value.trim();
+  const sort = sortSelect.value;
+  const gender = genderElement.value;
+
+  const params = new URLSearchParams();
+
+  if (search) params.append('search', search);
+  if (sort) params.append('sort', sort);
+  if (gender) params.append('gender', gender);
+
+  return `?${params.toString()}`;
+};
+
+// Hämta produkter
+const fetchProduct = async () => {
+  try {
+    const response = await fetch('http://localhost:3000/products' + getQueryString());
+    const data = await response.json();
+
+    if (Array.isArray(data.rows) && data.rows.length > 0) {
+      productElement.innerHTML = data.rows.map((product) => `
         <div>
           <img src="${product.image}" alt="${product.title}" />
-          <p>
-            <span><a href="products.html?id=${product.id}">View</a></span>
-          </p>
+          <p>${product.title}</p>
+          <p>Pris: ${product.price} SEK<p/>
+          <p><a href="products.html?id=${product.products_id}">Visa mer</a></p>
         </div>
       `).join('');
     } else {
-      postElement.innerHTML = "No products available.";
+      productElement.innerHTML = "Inga produkter hittades.";
     }
+
   } catch (error) {
-    postElement.innerHTML = "Oops, something went wrong. Please try again later!";
+    productElement.innerHTML = "Något gick fel. Försök igen senare!";
     console.error(error);
   }
 };
 
-fetchProduct();
+// Event listeners
+searchInput.addEventListener('keyup', fetchProduct);
+sortSelect.addEventListener('change', fetchProduct);
+genderElement.addEventListener('change', fetchProduct);
+
+// Initiera sida
+document.addEventListener('DOMContentLoaded', () => {
+  fetchGenders().then(fetchProduct); // Ladda genders först, sen produkter
+});

@@ -17,6 +17,7 @@
   <header>
     <span class="brand">
       <h1>VaruVärlden</h1>
+      <p>För mycket av det goda är precis lagom!</p>
     </span>
   </header>
         
@@ -24,22 +25,27 @@
     <form id="product-form" class="product-form">
       
       <div>
-        <input type="text" class="search" id="search" placeholder="Search" name="search" onkeyup="fetchProducts(event)">
+        <input type="text" class="search" id="search" placeholder="Sök på titel" name="search" onkeyup="fetchProduct(event)">
       </div>
 
       <div>
-        <select id="inputState" class="sort" id="sort" name="sort" onchange="fetchProducts(event)">
-          <option>Sort</option>
+        <select id="gender" class="gender" name="gender" onchange="fetchProduct(event)">
+          <option value="">Välj kön</option>
+        </select>
+      </div>
+
+      <div>
+        <select id="sort" class="sort" name="sort" onchange="fetchProduct(event)">
+          <option value="">Sortera efter pris</option>
           <option value="asc">Stigande</option>
           <option value="desc">Fallande</option>
         </select>
       </div>
     </form>
 
-    <h2>Våra produkter</h2>
     <div id="products" class="products"></div>
   </main>
 
-      <script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

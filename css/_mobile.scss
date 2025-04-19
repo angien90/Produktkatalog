@@ -10,7 +10,7 @@ html, body {
     background-color: #E9DFD7;
     font-family: "Poiret One", sans-serif;
     font-weight: 400;
-    font-style: normal;
+    font-style: bolder;
 }
 
 header {
@@ -32,6 +32,7 @@ header {
     background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.6), rgba(240, 240, 240, 0.4));
     box-shadow: 0 0 60px 30px rgba(0, 0, 0, 0.1);
     display: flex;
+    flex-direction: column;
     justify-content: center; 
     align-items: center;    
     text-align: center;
@@ -46,11 +47,16 @@ header {
 }
 
 h1 {
-    display: flex;
     font-family: "Clicker Script", cursive;
     font-weight: 400;
     font-style: bold;
     font-size: 5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.brand p {
+    font-size: 1.2rem;
 }
 
 .product-form {
@@ -90,20 +96,86 @@ h2 {
     font-size: 2rem;
     font-weight: lighter;
   }
-  
+
 .products, .product {
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-around;
     margin-top: 20px;
-    border: 1px solid black;
 }
 
-.products div, .product div {
+.products div {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
     margin-top: 10px;
-    border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
 }
 
-.date {
-    display: block;
-    color: #999;
+.products img, .product img {
+    border-radius: 10px;
+}
+
+.products p {
+    display: flex;
+    justify-content: center;
+}
+
+.products a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.product div {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.product p {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.product_name {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.product_description {
+    text-align: center;
+    font-size: 1.5rem; 
+    margin-bottom: 10px;
+}   
+
+.back {
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.back:hover {
+    background-color: #ddd;
+    border-color: #aaa;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
