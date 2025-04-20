@@ -3,11 +3,14 @@ Detta var vår första inlämningsuppgift i kursen API-utveckling, och syftet va
 
 Uppgiften gick ut på att:
 * Skapa ett normaliserat ER-diagram (EG-diagram) med tabeller, kolumner, primärnycklar och främmande nycklar
-* Skapa tabellerna i phpMyAdmin och definiera relationer mellan tabellerna
-* Implementera CRUD-funktionalitet (Create, Read, Update, Delete) för både produkter och kategorier
+* Skapa tabellerna i phpMyAdmin och definiera relationer mellan tabellerna.
+* Implementera CRUD-funktionalitet (Create, Read, Update, Delete) för både produkter och kategorier.
 * Möjliggöra sökning och sortering via API:et
+* Sätt upp nödvändig kod och testa kopplingen med hjälp av Insomnia.
 
 Fokus låg på att bygga en välstrukturerad databasmodell samt ett API med tydlig och korrekt hantering av data.
+
+För en mer detaljerad beskrivning kring uppgiften se filen 1. Uppgiftsbeskrivning.
 
 
 ## Använda verktyg
