@@ -56,11 +56,11 @@ Då jag fick lite tid över under inlämningsuppgiften testade jag att lägga ti
 
 
 ## phpMyAdmin för att administrera min MariaDB-databas
-### Tabellen categories
-![image](https://github.com/user-attachments/assets/fe275ed7-6b2d-434c-ab30-0724e0ed9572)
-
 ### Tabellen products 
 ![image](https://github.com/user-attachments/assets/94768302-7f5e-47be-98a8-2841bc6261a7)
+
+### Tabellen categories
+![image](https://github.com/user-attachments/assets/fe275ed7-6b2d-434c-ab30-0724e0ed9572)
 
 ### Tabellen product_categories
 ![image](https://github.com/user-attachments/assets/ed522fed-71f2-42ac-985e-74be102df562)
@@ -68,7 +68,16 @@ Då jag fick lite tid över under inlämningsuppgiften testade jag att lägga ti
 #### Forent keys för product_categories
 ![image](https://github.com/user-attachments/assets/df08cbe4-dfd7-41b0-9a7f-b7eff35c1d35)
 
-Jag har valt CASCADE för om en produkt eller kategori tas bort, så tas även radkopplingarna i product_categories bort automatiskt. Detta för att undvika att poster pekar på något som inte längre finns.
+### Tabellen genders
+![image](https://github.com/user-attachments/assets/486e4004-5610-4e4e-90fa-2704c7f4e2d5)
+
+### Tabellen product_gender
+![image](https://github.com/user-attachments/assets/a5ae5658-93b3-4ac7-970b-28a793d54428)
+
+#### Forent keys för product_gender
+![image](https://github.com/user-attachments/assets/3c0eb3db-be17-4ac5-b2dd-33401574c2d8)
+
+Jag har valt CASCADE på mina Forent keys för att undvika att poster pekar på något som inte längre finns.
 
 
 ## CRUD och endpoints i Insomnia
