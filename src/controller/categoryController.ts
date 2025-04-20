@@ -90,7 +90,7 @@ const formatCategory = (rows: ICategoriesDBResponse[]) => ({
 
 // Get specific products from category
 export const fetchProductsByCategory = async (req: Request, res: Response) => {
-  const categoryId = req.query.category?.toString();  // Hämta kategori från query-parametrar istället för URL-parametrar
+  const categoryId = req.params.id;  // Ändrat från req.query.category till req.params.id
   
   if (!categoryId) {
     res.status(400).json({ message: "Category parameter is required" });
@@ -119,6 +119,7 @@ export const fetchProductsByCategory = async (req: Request, res: Response) => {
     res.status(500).json({ error: message });
   }
 };
+
 
   
 // Create a category

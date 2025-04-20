@@ -64,8 +64,8 @@ export const fetchGender = async (req: Request, res: Response) => {
 
   // Get specific products from gender
   export const fetchProductsByGender = async (req: Request, res: Response) => {
-    const genderId = req.query.gender?.toString();  // Hämta kön från query-parametrar istället för URL-parametrar
-    
+    const genderId = req.params.id;  // Ändrat från req.query.gender till req.params.id
+  
     if (!genderId) {
       res.status(400).json({ message: "Gender parameter is required" });
       return;
@@ -75,7 +75,7 @@ export const fetchGender = async (req: Request, res: Response) => {
       const sql = `
         SELECT p.*
         FROM products p
-        JOIN product_gender pg ON p.products_id = pg.product_id
+        JOIN product_gender pg ON p.products_id = pg.products_id
         WHERE pg.genders_id = ?
       `;
       const [rows] = await db.query<RowDataPacket[]>(sql, [genderId]);
@@ -91,7 +91,7 @@ export const fetchGender = async (req: Request, res: Response) => {
       const message = error instanceof Error ? error.message : 'Unknown error';
       res.status(500).json({ error: message });
     }
-  };
+  };  
   
   
 // Create a gender
