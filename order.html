@@ -14,23 +14,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   </head>
 
-  <body class="light-mode">
+  <body class="order-page">
     <header>
-      <div class="theme-switch-wrapper">
+    <div class="theme-switch-wrapper">
+        <span><a class="back" href="index.html">← Tillbaka</a></span>
         <label class="theme-switch" for="checkbox">
-          <input type="checkbox" id="checkbox" />
-          <div class="slider round"></div>
-        </label>            
-      </div>
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+        </div>
 
       <span class="brand">
         <h1>Varukorgen</h1>
       </span>
     </header>
-    </header>
 
+    <main>
     <!-- Varukorg -->
-    <form id="myForm">
+    <form id="myForm" class="cart-form">
         <section class="my-cart">
         <article>
           <h2 class="cart-title">Orderbekräftelse</h2>
@@ -51,19 +52,19 @@
         <h3>Förnamn: *</h3>
         <div class="input-group">
           <input class="input" type="text" id="fname" name="fname" aria-label="Gottfrid" value="" required><br>
-          <label class="label" for="fname">T.ex. Gottfrid</label><span id="firstNameError"><i class="material-symbols-outlined">warning</i></span><span id="firstNameErrorMessage"></span><br>
+          <label class="label" for="fname">T.ex. Hugo</label><span id="firstNameError"><i class="material-symbols-outlined">warning</i></span><span id="firstNameErrorMessage"></span><br>
         </div>
   
         <h3>Efternamn: *</h3>
         <div class="input-group">
           <input class="input" type="text" id="lname" name="lname" aria-label="Jätson" value="" required><br>
-          <label class="label" for="lname">T.ex. Jätson</label><span id="lastNameError"><i class="material-symbols-outlined">warning</i></span><span id="lastNameErrorMessage"></span><br>
+          <label class="label" for="lname">T.ex. Boss</label><span id="lastNameError"><i class="material-symbols-outlined">warning</i></span><span id="lastNameErrorMessage"></span><br>
         </div>
   
         <h3>Adress (gata + nr): *</h3>
         <div class="input-group">
           <input class="input" type="text" id="address" name="address" aria-label="Snaskvägen 1" value="" required><br>
-          <label class="label" for="address">T.ex. Snaskvägen 1</label><span id="addressError"><i class="material-symbols-outlined">warning</i></span><span id="addressErrorMessage"></span><br>
+          <label class="label" for="address">T.ex. Fashionstreet 1</label><span id="addressError"><i class="material-symbols-outlined">warning</i></span><span id="addressErrorMessage"></span><br>
         </div>
   
         <h3>Portkod:</h3>
@@ -81,7 +82,7 @@
         <h3>Postort: *</h3>
         <div class="input-group">
           <input class="input" type="text" id="postalAddress" name="postort" aria-label="Snaskköping" value="" required><br>
-          <label class="label" for="postalAddress">T.ex. Snaskköping</label><span id="postalAddressError"><i class="material-symbols-outlined">warning</i></span><span id="postalAddressErrorMessage"></span><br>
+          <label class="label" for="postalAddress">T.ex. Modeköping</label><span id="postalAddressError"><i class="material-symbols-outlined">warning</i></span><span id="postalAddressErrorMessage"></span><br>
         </div>
   
         <h3>Telefon (mobil): *</h3>
@@ -93,7 +94,7 @@
         <h3>E-postadress: *</h3>
         <div class="input-group">
           <input class="input" type="email" id="email" name="email" aria-label="gottfridsgyllenemunkar@munkar.com" value="" required><br>
-          <label class="label" for="email">T.ex. gottfridsgyllenemunkar@munkar.com</label><span id="emailError"><i class="material-symbols-outlined">warning</i></span><span id="emailErrorMessage"></span><br>
+          <label class="label" for="email">T.ex. varuvarlden@munkar.com</label><span id="emailError"><i class="material-symbols-outlined">warning</i></span><span id="emailErrorMessage"></span><br>
         </div>
   
         <h3>Rabattkod:</h3>
@@ -111,11 +112,11 @@
   
         <div class="checkboxes">
           <label>
-            <input type="checkbox" name="personnummer" required> Jag godkänner att Gottrids Gyllene Munkar behandlar mina personuppgifter *
+            <input type="checkbox" name="personnummer" required> Jag godkänner att VaruVärlden behandlar mina personuppgifter *
           </label><br>
   
           <label>
-            <input type="checkbox" checked="checked" name="nyhetsbrev"> Jag vill ta del av Gottrids Gyllene Munkars nyhetsbrev
+            <input type="checkbox" checked="checked" name="nyhetsbrev"> Jag vill ta del av VaruVärldens nyhetsbrev
           </label><br>
         </div>
       </section>
@@ -161,6 +162,7 @@
       <input type="submit" id="submit" name="submit" value="Skicka din beställning" disabled>
     </div>
   </form>
+  </main>
   
   
     <!-- Sidfot -->
@@ -179,7 +181,7 @@
     </footer>
   </main>
   
-    <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
   
   </body>
   </html>

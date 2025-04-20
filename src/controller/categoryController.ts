@@ -88,27 +88,38 @@ const formatCategory = (rows: ICategoriesDBResponse[]) => ({
     }))
 });
 
-// Get all products in a specific categories
+// Get specific products from category
 export const fetchProductsByCategory = async (req: Request, res: Response) => {
-    const categoryId = req.params.id;
+  const categoryId = req.query.category?.toString();  // Hämta kategori från query-parametrar istället för URL-parametrar
   
-    try {
-      const sql = `
-        SELECT p.*
-        FROM products p
-        JOIN product_categories pc ON p.products_id = pc.product_id
-        WHERE pc.category_id = ?
-        `;
-        
-      const [rows] = await db.query<RowDataPacket[]>(sql, [categoryId]);
-  
-      res.json(rows);
-    } catch (error: unknown) {
-      console.error('Error fetching products by category:', error);
-      const message = error instanceof Error ? error.message : 'Unknown error';
-      res.status(500).json({ error: message });
+  if (!categoryId) {
+    res.status(400).json({ message: "Category parameter is required" });
+    return;
+  }
+
+  try {
+    const sql = `
+      SELECT p.*
+      FROM products p
+      JOIN product_categories pc ON p.products_id = pc.product_id
+      WHERE pc.category_id = ?
+    `;
+    
+    const [rows] = await db.query<RowDataPacket[]>(sql, [categoryId]);
+
+    if (rows.length === 0) {
+      res.status(404).json({ message: "No products found for the selected category" });
+      return;
     }
-  };
+
+    res.json(rows);
+  } catch (error: unknown) {
+    console.error('Error fetching products by category:', error);
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    res.status(500).json({ error: message });
+  }
+};
+
   
 // Create a category
 export const createCategory = async (req: Request, res: Response) => {

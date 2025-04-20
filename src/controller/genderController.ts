@@ -62,36 +62,37 @@ export const fetchGender = async (req: Request, res: Response) => {
   };
 
 
-// Get all products in a specific genders
-export const fetchProductsByGender = async (req: Request, res: Response) => {
-  const genderId = req.query.gender?.toString(); // Hämta kön från query-parametrar istället för URL-parametrar
-
-  if (!genderId) {
-    res.status(400).json({ message: "Gender parameter is required" });
-    return;
-  }
-
-  try {
-    const sql = `
-      SELECT p.*
-      FROM products p
-      JOIN product_gender pg ON p.products_id = pg.products_id
-      WHERE pg.genders_id = ?
-    `;
-    const [rows] = await db.query<RowDataPacket[]>(sql, [genderId]);
-
-    if (rows.length === 0) {
-      res.status(404).json({ message: "No products found for the selected gender" });
+  // Get specific products from gender
+  export const fetchProductsByGender = async (req: Request, res: Response) => {
+    const genderId = req.query.gender?.toString();  // Hämta kön från query-parametrar istället för URL-parametrar
+    
+    if (!genderId) {
+      res.status(400).json({ message: "Gender parameter is required" });
       return;
     }
-
-    res.json(rows);
-  } catch (error: unknown) {
-    console.error('Error fetching products by gender:', error);
-    const message = error instanceof Error ? error.message : 'Unknown error';
-    res.status(500).json({ error: message });
-  }
-};
+  
+    try {
+      const sql = `
+        SELECT p.*
+        FROM products p
+        JOIN product_gender pg ON p.products_id = pg.product_id
+        WHERE pg.genders_id = ?
+      `;
+      const [rows] = await db.query<RowDataPacket[]>(sql, [genderId]);
+  
+      if (rows.length === 0) {
+        res.status(404).json({ message: "No products found for the selected gender" });
+        return;
+      }
+  
+      res.json(rows);
+    } catch (error: unknown) {
+      console.error('Error fetching products by gender:', error);
+      const message = error instanceof Error ? error.message : 'Unknown error';
+      res.status(500).json({ error: message });
+    }
+  };
+  
   
 // Create a gender
 export const createGender = async (req: Request, res: Response) => {

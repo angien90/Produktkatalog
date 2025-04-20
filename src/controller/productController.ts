@@ -8,27 +8,43 @@ import { IProductsDBResponse } from "../models/IProductsDBResponse";
 export const fetchAllProducts = async (req: Request, res: Response) => {
   const search = req.query.search?.toString();
   const sort = req.query.sort?.toString()?.toLowerCase();
-  const gender = req.query.gender?.toString(); // Hämtar kön från query
+  const gender = req.query.gender?.toString();
+  const category = req.query.category?.toString();
 
   let sql = 'SELECT DISTINCT p.* FROM products p';
   const params: any[] = [];
 
-  // Kontrollera om kön är angivet
+  // Lägg till INNER JOINs beroende på vilka filter som används
   if (gender) {
-    sql += ' INNER JOIN product_gender pg ON p.products_id = pg.product_id';
-    sql += ' WHERE pg.genders_id = ?';
-    params.push(gender);  // Lägg till kön som parameter
-  } else {
-    sql += ' WHERE 1 = 1';  // Hämtar alla produkter om inget kön är valt
+    sql += ' INNER JOIN product_gender pg ON p.products_id = pg.products_id';
   }
 
-  // Lägg till sökfilter om det finns
+  if (category) {
+    sql += ' INNER JOIN product_categories pc ON p.products_id = pc.product_id'; 
+  }
+
+  // WHERE 1=1 för att kunna lägga till AND-villkor
+  sql += ' WHERE 1=1';
+
+  // Filtrera på kön
+  if (gender) {
+    sql += ' AND pg.genders_id = ?';
+    params.push(gender);
+  }
+
+  // Filtrera på kategori
+  if (category) {
+    sql += ' AND pc.category_id = ?';
+    params.push(category);
+  }
+
+  // Filtrera på sökord i titel
   if (search) {
     sql += ' AND p.title LIKE ?';
     params.push(`%${search}%`);
   }
 
-  // Lägg till sortering om det finns
+  // Sortera om begärt
   if (sort === 'asc' || sort === 'desc') {
     sql += ` ORDER BY p.price ${sort.toUpperCase()}`;
   }
@@ -44,8 +60,6 @@ export const fetchAllProducts = async (req: Request, res: Response) => {
     res.status(500).json({ error: message });
   }
 };
-
-
 
 
 // Get a specific product

@@ -14,13 +14,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   </head>
 
-  <body class="light-mode">
+  <body class="index-page">
     <header>
       <div class="theme-switch-wrapper">
+        <span><a class="back" href="index.html">← Tillbaka</a></span>
         <label class="theme-switch" for="checkbox">
-          <input type="checkbox" id="checkbox" />
-          <div class="slider round"></div>
-        </label>            
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
       </div>
   
     <span class="brand">
@@ -31,7 +32,10 @@
         
   <main>
     <span class="cart-info">
-      <a href="#myForm" class="button"><span class="material-symbols-outlined">shopping_cart</span><span class="cart-count"></span></a>
+      <a href="order.html" class="button">
+        <span class="material-symbols-outlined">shopping_cart</span>
+        <span class="cart-count"></span>
+      </a>
       <span class="total-sum" id="totalSum">0 kr</span>  
     </span>
 
@@ -39,6 +43,19 @@
       
       <div>
         <input type="text" class="search" id="search" placeholder="Sök på titel" name="search" onkeyup="fetchProduct(event)">
+      </div>
+
+      <div>
+        <select id="category" class="category" name="category" onchange="fetchProduct(event)">
+          <option value="">Välj kategori</option>
+          <option value="1">Jackor</option>
+          <option value="4">Jeans & Byxor</option>
+          <option value="2">Klänningar</option>
+          <option value="3">Skor</option>
+          <option value="7">T-shirt</option>
+          <option value="5">Tröjor</option>
+          <option value="6">Underkläder</option>
+        </select>
       </div>
 
       <div>
@@ -60,6 +77,7 @@
     </form>
 
     <div id="products" class="products"></div>
+  </main>
 
   <!-- Sidfot -->
   <footer>
