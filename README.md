@@ -10,7 +10,7 @@ Uppgiften gick ut på att:
 Fokus låg på att bygga en välstrukturerad databasmodell samt ett API med tydlig och korrekt hantering av data.
 
 
-## Använda verktyg i projektet
+## Använda verktyg
 <div align="center">
   <img src="https://github.com/user-attachments/assets/08a3194b-5a8c-4ca6-afb7-d863003a3628" width="100"/>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -18,6 +18,30 @@ Fokus låg på att bygga en välstrukturerad databasmodell samt ett API med tydl
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="https://github.com/user-attachments/assets/bedb7ac9-6fb6-4eb7-be4c-3538dfb5a63d" width="100"/>
 </div>
+
+## Använda tekniker
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+
+
+## Installationer - Node/Express/Typescript
+1. npm init -y
+2. npm install express
+3. npm install -D typescript @types/express
+4. npm install -D tsx
+5. Skapade en src mapp och en index.ts fil
+6. npx tsc --init
+7. Ändrade tsconfig.json till "module": "NodeNext" & "outDir": "./dist"
+8. Lade till "dev": "npx tsx watch src/index.ts", "build": npx tsc --build & "start": "node dist/index.js" i package.json under scripts.
+9. Installerade npm install dotenv mysql2 cors + npm install -D @types/dotenv @types/cors
+10. Lade till .env fil + .gitignore + db.ts
+
+Om du klonar detta projekt behöver du köra npm install för att installera allt som står i package.json under dependencies och devDependencies. 
 
 
 ## Normaliserat Entity Relationshop Diagram 
@@ -45,21 +69,6 @@ Då jag fick lite tid över under inlämningsuppgiften testade jag att lägga ti
 ![image](https://github.com/user-attachments/assets/df08cbe4-dfd7-41b0-9a7f-b7eff35c1d35)
 
 Jag har valt CASCADE för om en produkt eller kategori tas bort, så tas även radkopplingarna i product_categories bort automatiskt. Detta för att undvika att poster pekar på något som inte längre finns.
-
-
-## Installationer - Node/Express/Typescript
-1. npm init -y
-2. npm install express
-3. npm install -D typescript @types/express
-4. npm install -D tsx
-5. Skapade en src mapp och en index.ts fil
-6. npx tsc --init
-7. Ändrade tsconfig.json till "module": "NodeNext" & "outDir": "./dist"
-8. Lade till "dev": "npx tsx watch src/index.ts", "build": npx tsc --build & "start": "node dist/index.js" i package.json under scripts.
-
-För att komplilera alla TS-filer till JS kan man köra npx tsc --build. 
-
-Om du klonar detta projekt behöver du köra npm install för att installera allt som står i package.json under dependencies och devDependencies. 
 
 
 ## CRUD och endpoints i Insomnia
