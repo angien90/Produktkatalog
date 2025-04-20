@@ -119,19 +119,19 @@ const formatProduct = (rows: IProductsDBResponse[]) => ({
 // Create a product
 export const createProduct = async (req: Request, res: Response) => {
     const id = req.params.id;
-    const { title, description, stock, price, image } = req.body;
+    const { title, description, stock, price } = req.body;
  
-    if (!title || !description || !stock || !price || !image) {
-    res.status(400).json({error: 'Title, description, stock, price and image is required'}) 
+    if (!title || !description || !stock || !price) {
+    res.status(400).json({error: 'Title, description, stock and price is required'}) 
     return; 
   }
 
   try {
     const sql = `
-      INSERT INTO products (title, description, stock, price, image)
-      VALUES (?, ?, ?, ?, ?)
+      INSERT INTO products (title, description, stock, price)
+      VALUES (?, ?, ?, ?)
     `
-    const [result] = await db.query<ResultSetHeader>(sql, [title, description, stock, price, image])
+    const [result] = await db.query<ResultSetHeader>(sql, [title, description, stock, price])
     res.status(201).json({message: 'Product is created', id: result.insertId})
   } catch (error: unknown) {
     const message = error  instanceof Error ? error.message : 'Unknown error'
@@ -142,17 +142,17 @@ export const createProduct = async (req: Request, res: Response) => {
 // Update a product
 export const updateProduct = async (req: Request, res: Response) => {
     const id = req.params.id;
-    const { title, description, stock, price, image } = req.body;
+    const { title, description, stock, price } = req.body;
 
-    if (!title || !description || !stock || !price || !image) {
-        res.status(400).json({ error: 'Title, description, stock, price and image is required' });
+    if (!title || !description || !stock || !price) {
+        res.status(400).json({ error: 'Title, description, stock and price is required' });
         return;
       }
 
     try {
     const sql = `
         UPDATE products 
-        SET title = ?, description = ?, stock = ?, price = ?, image = ?
+        SET title = ?, description = ?, stock = ?, price = ?
         WHERE products_id = ?
     `;
 
@@ -161,7 +161,6 @@ export const updateProduct = async (req: Request, res: Response) => {
         description,
         stock,
         price,
-        image,
         id
     ]);
 
