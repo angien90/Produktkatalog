@@ -3,7 +3,7 @@ import { RowDataPacket } from "mysql2";
 
 export interface IProducts extends RowDataPacket{
     id: number; 
-    titel: string;
+    title: string;
     description: string;
     stock: number;
     price: number;

@@ -3,18 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VaruVärlden - Produkter</title>
+  <title>VaruVärlden - Produktsida</title>
   
   <link rel="stylesheet" href="css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 
-<body>
-  <div class="container">
-    <h1>Specifika produkter</h1>
+<body class="product-page">
+  <main>
+    <div class="theme-switch-wrapper">
+      <span><a class="back" href="index.html">← Tillbaka</a></span>
+      <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round"></div>
+      </label>
+      </div>
 
-    <div id="post"></div>
-  </div>
+    <div id="products" class="product"></div>
+    </main>
 
-  <script src="js/post.js"></script>
+    <!-- Sidfot -->
+    <footer>
+      <ul>
+        <li><a href="#">Om oss</a></li>
+        <li><a href="#">Kontakta oss</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+  
+      <ul>
+        <li>VaruVärlden</li>
+        <li>Fashionstreet 1</li>
+        <li>123 45 Modeköping</li>
+      </ul>
+    </footer>
+    
+  <script src="js/product.js"></script>
 </body>
 </html>

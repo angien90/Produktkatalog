@@ -1,5 +1,8 @@
 // Install npm install dotenv mysql2 cors + npm install -D @types/dotenv @types/cors
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 import mysql from 'mysql2/promise';
 
 // Create the connection pool. Vår default

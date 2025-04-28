@@ -6,30 +6,96 @@
     <title>VaruVärlden</title>
 
     <link rel="stylesheet" href="css/style.css">
-</head>
 
-<body>
-    <div class="container">
-        <h1>Våra produkter</h1>
-    
-        <form id="product-form" class="row g-3 flex justify-content-end">
-          <div class="col-md-3">
-            <input type="text" class="form-control" id="search" placeholder="Search" name="search" onkeyup="fetchProducts(event)">
-          </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  </head>
 
-          <div class="col-md-2">
-            <select id="inputState" class="form-select" id="sort" name="sort" onchange="fetchProducts(event)">
-              <option>Sort</option>
-              <option value="asc">Ascending</option>
-              <option value="desc">Descending</option>
-            </select>
-          </div>
-        </form>
-    
-        <div id="products"></div>
-    
+  <body class="index-page">
+    <header>
+      <div class="theme-switch-wrapper">
+        <span><a class="back" href="index.html">← Tillbaka</a></span>
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+      </div>
+  
+    <span class="brand">
+      <h1>VaruVärlden</h1>
+      <p>För mycket av det goda är precis lagom!</p>
+    </span>
+  </header>
+        
+  <main>
+    <span class="cart-info">
+      <a href="order.html" class="button">
+        <span class="material-symbols-outlined">shopping_cart</span>
+        <span class="cart-count"></span>
+      </a>
+      <span class="total-sum" id="totalSum">0 kr</span>  
+    </span>
+
+    <form id="product-form" class="product-form">
+      
+      <div>
+        <input type="text" class="search" id="search" placeholder="Sök på titel" name="search" onkeyup="fetchProduct(event)">
       </div>
 
-      <script src="js/main.js"></script>
+      <div>
+        <select id="category" class="category" name="category" onchange="fetchProduct(event)">
+          <option value="">Välj kategori</option>
+          <option value="1">Jackor</option>
+          <option value="4">Jeans & Byxor</option>
+          <option value="2">Klänningar</option>
+          <option value="3">Skor</option>
+          <option value="7">T-shirt</option>
+          <option value="5">Tröjor</option>
+          <option value="6">Underkläder</option>
+        </select>
+      </div>
+
+      <div>
+        <select id="gender" class="gender" name="gender" onchange="fetchProduct(event)">
+          <option value="">Välj kön</option>
+          <option value="Men">Men</option>
+          <option value="Women">Kvinna</option>
+          <option value="Unisex">Unisex</option>
+        </select>
+      </div>
+
+      <div>
+        <select id="sort" class="sort" name="sort" onchange="fetchProduct(event)">
+          <option value="">Sortera efter pris</option>
+          <option value="asc">Stigande</option>
+          <option value="desc">Fallande</option>
+        </select>
+      </div>
+    </form>
+
+    <div id="products" class="products"></div>
+  </main>
+
+  <!-- Sidfot -->
+  <footer>
+    <ul>
+      <li><a href="#">Om oss</a></li>
+      <li><a href="#">Kontakta oss</a></li>
+      <li><a href="#">Instagram</a></li>
+    </ul>
+
+    <ul>
+      <li>VaruVärlden</li>
+      <li>Fashionstreet 1</li>
+      <li>123 45 Modeköping</li>
+    </ul>
+  </footer>
+  </main>
+
+  <script src="js/main.js"></script>
+
 </body>
 </html>

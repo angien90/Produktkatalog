@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaruVärlden</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  </head>
+
+  <body class="order-page">
+    <header>
+    <div class="theme-switch-wrapper">
+        <span><a class="back" href="index.html">← Tillbaka</a></span>
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+        </div>
+
+      <span class="brand">
+        <h1>Varukorgen</h1>
+      </span>
+    </header>
+
+    <main>
+    <!-- Varukorg -->
+    <form id="myForm" class="cart-form">
+        <section class="my-cart">
+        <article>
+          <h2 class="cart-title">Orderbekräftelse</h2>
+          <div id="cart"></div>
+        </article>
+        <div class="monday-discount" id="discount-summary"></div>
+        <div class="discount" id="discount"></div>
+        <div class="shipping-cost" id="shippingCost"></div>
+        <hr>
+        <div class="total-cost" id="totalCost"></div>
+      </section>
+  
+    <!-- Kunduppgifter -->
+      <section class="delivery-information">
+        <h2>Leveransuppgifter</h2>
+        <p>(* = obligatoriska fält)</p>
+  
+        <h3>Förnamn: *</h3>
+        <div class="input-group">
+          <input class="input" type="text" id="fname" name="fname" aria-label="Gottfrid" value="" required><br>
+          <label class="label" for="fname">T.ex. Hugo</label><span id="firstNameError"><i class="material-symbols-outlined">warning</i></span><span id="firstNameErrorMessage"></span><br>
+        </div>
+  
+        <h3>Efternamn: *</h3>
+        <div class="input-group">
+          <input class="input" type="text" id="lname" name="lname" aria-label="Jätson" value="" required><br>
+          <label class="label" for="lname">T.ex. Boss</label><span id="lastNameError"><i class="material-symbols-outlined">warning</i></span><span id="lastNameErrorMessage"></span><br>
+        </div>
+  
+        <h3>Adress (gata + nr): *</h3>
+        <div class="input-group">
+          <input class="input" type="text" id="address" name="address" aria-label="Snaskvägen 1" value="" required><br>
+          <label class="label" for="address">T.ex. Fashionstreet 1</label><span id="addressError"><i class="material-symbols-outlined">warning</i></span><span id="addressErrorMessage"></span><br>
+        </div>
+  
+        <h3>Portkod:</h3>
+        <div class="input-group">
+          <input class="input" type="text" id="portCode" name="portkod" placeholder="  T.ex. 1234#" aria-label="1234#" value=""><br>
+          <label class="label" for="portCode"></label><br>
+        </div>
+  
+        <h3>Postnummer: *</h3>
+        <div class="input-group">
+          <input class="input" type="text" id="zipCode" name="postnr" aria-label="123 45" value="" required><br>
+          <label class="label" for="zipCode">T.ex. 123 45</label><span id="zipCodeError"><i class="material-symbols-outlined">warning</i></span><span id="zipCodeErrorMessage"></span><br>
+        </div>
+  
+        <h3>Postort: *</h3>
+        <div class="input-group">
+          <input class="input" type="text" id="postalAddress" name="postort" aria-label="Snaskköping" value="" required><br>
+          <label class="label" for="postalAddress">T.ex. Modeköping</label><span id="postalAddressError"><i class="material-symbols-outlined">warning</i></span><span id="postalAddressErrorMessage"></span><br>
+        </div>
+  
+        <h3>Telefon (mobil): *</h3>
+        <div class="input-group">
+          <input class="input" type="tel" id="phone" name="phone" aria-label="0701234567" value="" required><br>
+          <label class="label" for="phone">T.ex. 0701234567</label><span id="phoneError"><i class="material-symbols-outlined">warning</i></span><span id="phoneErrorMessage"></span><br>
+        </div>
+  
+        <h3>E-postadress: *</h3>
+        <div class="input-group">
+          <input class="input" type="email" id="email" name="email" aria-label="gottfridsgyllenemunkar@munkar.com" value="" required><br>
+          <label class="label" for="email">T.ex. varuvarlden@munkar.com</label><span id="emailError"><i class="material-symbols-outlined">warning</i></span><span id="emailErrorMessage"></span><br>
+        </div>
+  
+        <h3>Rabattkod:</h3>
+        <div class="input-group">
+          <input class="input" type="text" id="sale" name="sale" placeholder="  T.ex. ABC_123" aria-label="ABC_123" value=""><br>
+          <label class="label" for="sale"></label><br>
+        </div>
+  
+        <label for="paymentMethod">Betalningssätt: *</label><span id="paymentMethodError"><i class="material-symbols-outlined">warning</i></span><span id="paymentMethodErrorMessage"></span><br>
+        <select id="paymentMethod" name="payment-method" required>
+          <option value="" selected>Gör ditt val här!</option>
+          <option id="card" value="card">Kortbetalning</option>
+          <option id="invoice" value="invoice">Faktura</option>
+        </select>
+  
+        <div class="checkboxes">
+          <label>
+            <input type="checkbox" name="personnummer" required> Jag godkänner att VaruVärlden behandlar mina personuppgifter *
+          </label><br>
+  
+          <label>
+            <input type="checkbox" checked="checked" name="nyhetsbrev"> Jag vill ta del av VaruVärldens nyhetsbrev
+          </label><br>
+        </div>
+      </section>
+  
+        <!-- Betalningsuppgifter -->
+        <section class="payment-details" id="paymentDetails" style="display: none;">
+          <h3>Betalningsuppgifter</h3>
+            <p>Accepterade kort</p>
+            <div class="card-icons">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+            </div>
+  
+            <div class="card-information">
+              <label for="cname">Kortnamn</label><span id="cardNameError"><i class="material-symbols-outlined">warning</i></span><span id="cardNameErrorMessage"></span>
+              <input type="text" id="cname" name="cardname" placeholder="Gottfrid Jästson" aria-label="Gottfrid Jästson">
+              <label for="ccnum">Kortnummer</label><span id="cardNumberError"><i class="material-symbols-outlined">warning</i></span><span id="cardNumberErrorMessage"></span>
+              <input type="number" id="ccnum" name="cardnumber" placeholder="1111 2222 3333 4444" aria-label="1111 2222 3333 4444">
+              <label for="expdate">Utgångsdatum</label><span id="expDateError"><i class="material-symbols-outlined">warning</i></span><span id="expDateErrorMessage"></span>
+              <input type="text" id="expdate" name="expdate" placeholder="01/12" aria-label="01/12">
+              <label for="cvv">CVV</label><span id="cvvError"><i class="material-symbols-outlined">warning</i></span><span id="cvvErrorMessage"></span>
+              <input type="number" id="cvv" name="cvv" placeholder="123" aria-label="123">
+            </div>
+        </section>
+  
+    <!-- Betalningsuppgifter -->
+    <section class="payment-details-invocie" id="paymentDetailsInvoice" style="display: none;">
+      <h3>Betalningsuppgifter</h3>
+      <p>För att kunna betala med faktura behöver du ange ditt personummer nedan</p>
+      <div class="invoice-information">
+        <label for="secnumber">Personnummer</label><span id="securityNumberError"><i class="material-symbols-outlined">warning</i></span><span id="securityNumberErrorMessage"></span>
+        <input type="number" id="secnumber" name="securitynumber" placeholder="12345678-1234" aria-label="12345678-1234">
+      </div>
+      <div class="invoice-address">
+        <label>
+          <input type="checkbox" name="fakturaadress"> Min leveransadress är det samma som min fakturaadress. 
+        </label><br>
+      </div>
+    </section>
+  
+    <div class="submit-order">
+      <button id="clearButton">Töm beställning</button>
+      <input type="submit" id="submit" name="submit" value="Skicka din beställning" disabled>
+    </div>
+  </form>
+  </main>
+  
+  
+    <!-- Sidfot -->
+    <footer>
+      <ul>
+        <li><a href="#">Om oss</a></li>
+        <li><a href="#">Kontakta oss</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+  
+      <ul>
+        <li>VaruVärlden</li>
+        <li>Fashionstreet 1</li>
+        <li>123 45 Modeköping</li>
+      </ul>
+    </footer>
+  </main>
+  
+  <script src="js/cart.js"></script>
+  
+  </body>
+  </html>
