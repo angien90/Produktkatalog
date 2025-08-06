@@ -180,3 +180,5 @@ Som frontendutvecklare kliade det i fingrarna att applicera ovan kunskap på en 
 ![image](https://github.com/user-attachments/assets/480edd9f-b322-4a40-9d8f-086daa54ca23)
 
 
+## Betyg
+<img width="643" height="360" alt="betyg" src="https://github.com/user-attachments/assets/2a9440f8-1ecc-443b-ac54-dd50f26d8ccd" />
